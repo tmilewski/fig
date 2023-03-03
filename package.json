@@ -24,14 +24,17 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.3",
+    "uuid": "^9.0.0",
     "xstate": "^4.37.0",
     "zod": "^3.20.6"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^13.2.3",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^16.11.6",
     "@types/react": "^18.0.28",
+    "@types/uuid": "^9.0.1",
     "autoprefixer": "^10.4.13",
     "axe-core": "^4.6.3",
     "cypress": "^12.7.0",
