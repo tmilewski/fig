@@ -18,9 +18,6 @@ jobs:
 
       - name: Cypress E2E Tests
         uses: cypress-io/github-action@v5
-        env:
-          CYPRESS_host: localhost
-          CYPRESS_port: 3000
         with:
           build: yarn run build
           start: yarn run start
