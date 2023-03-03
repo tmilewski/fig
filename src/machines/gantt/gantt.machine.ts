@@ -1,5 +1,5 @@
 import { createMachine, assign, spawn, actions } from 'xstate'
-import { v4 as uuidv4 } from 'uuid'
+import { uuid } from '@/utils'
 import { createGanttItemMachine } from './gantt-item.machine'
 import { hslFromString } from '@/utils/hsl-from-string'
 import { items as defaultItems } from 'constants/index'
@@ -41,7 +41,7 @@ function createItem({ name, start, end }: Item): ItemExtended {
   const unixEnd = end.getTime()
 
   return {
-    id: uuidv4(),
+    id: uuid(),
     name,
     start,
     end,
