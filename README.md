@@ -1,9 +1,26 @@
 # Gantt Chart
 
-Create a simple Gantt Chart with the given array of information. Question by [Parssa Kyanzadeh](https://www.twitter.com/ParssaKyanzadeh)
+## Getting Started
 
-Paths have also been set up to compile from `/src`, making component imports go from
-`../../../components/Nav` to `components/Nav`. :)
+### Development
 
-Run `yarn` to download all dependencies, and `yarn dev` to start the development
-environment. 
+- `yarn install`
+- `yarn run dev`
+
+### E2E Tests
+
+- `yarn run dev`
+- `yarn run cypress:open` (in a separate terminal, for the time being)
+
+### Linting
+
+`yarn run lint`
+
+### Formatting
+
+`yarn run fmt:check` / `yarn run fmt:write`
+
+### Building / Serving
+
+- `yarn run build` 
+- `yarn run start`

@@ -1,36 +1,16 @@
-import { useState } from "react";
-import { GanttChart as FinishedGanttChart, getColorFromString } from "@parssa/universal-ui";
-import { GanttChart } from "components/GanttChart";
-import { items } from "constants/index";
+import { GanttChart } from '@/components/gantt-chart'
+import { items } from '@/constants'
 
 export default function Home() {
-  const [showFinalProduct, setShowFinalProduct] = useState(false);
-
   return (
     <>
-      <main className="container min-h-screen pt-24 tracking-tight">
-        <h1 className="text-3xl font-bold">Gantt Chart</h1>
-        <div className="my-4 border border-purple-600 bg-purple-50 text-purple-800 p-2 rounded">
-          <p className="font-semibold">Implement the Gantt Chart component.</p>
-          <ul className="mt-0.5 list-disc list-inside">
-            <li>Gantt Chart's display a list of items with a start and end date.</li>
-            <li>Items are ordered by their start date.</li>
-            <li>Items are displayed in a row.</li>
-            <li>
-              <span className="font-medium">Bonus:</span> Clicking on rows in the chart remove them
-            </li>
-          </ul>
-          <button
-            className="bg-white shadow rounded font-medium px-3 py-1 text-sm mt-2"
-            onClick={() => setShowFinalProduct((prev) => !prev)}
-          >
-            {showFinalProduct ? "Hide" : "Show"} Final Product
-          </button>
-        </div>
-
-        {showFinalProduct && <FinishedGanttChart defaultItems={items} />}
-        <GanttChart className="mt-4" items={items} />
+      <main className="container min-h-screen py-24 prose lg:prose-xl max-w-none">
+        <h1 className="mb-12">Gantt Chart Implementation</h1>
+        <p className="text-xs">
+          NOTE: Current Date is hard-coded to 10/10/2022, due to the dates set on the provided constants.
+        </p>
+        <GanttChart className="overflow-x-clip" items={items} />
       </main>
     </>
-  );
+  )
 }

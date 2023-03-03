@@ -1,5 +1,70 @@
-@import 'https://rsms.me/inter/inter.css'; 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* 
+gray
+200 - 229 231 235
+300 - 203 213 225
+900 - 17 24 39
+
+blue
+600 - 37 99 235
+700 - 29 78 216
+
+red
+200 - 254 202 202
+500 - 252 165 165
+700 - 185 28 28
+800 - 153 27 27 
+*/
+
+@layer base {
+  :root {
+    --base: 255 255 255; /* white */
+
+    --background: 239 240 241; /* gray-100 */
+    --foreground: 20 28 36; /* gray-900 */
+
+    --accent-200: 229 231 235; /* gray-200 */
+    --accent-300: 203 213 225; /* gray-300 */
+    --accent-900: 17 24 39; /* gray-900 */
+
+    --blue-base: 29 78 216; /* blue-700 */
+    --blue-light: 37 99 235; /* blue-600 */
+
+    --red-dark: 153 27 27; /* red-800 */
+    --red-base: 185 28 28; /* red-700 */
+    --red-light: 252 165 165; /* red-500 */
+    --red-lighter: 254 202 202; /* red-200 */
+
+    --danger-dark: 153 27 27; /* red-800 */
+    --danger-base: 185 28 28; /* red-700 */
+  }
+
+  [data-theme='dark'] {
+    --base: 0 0 0; /* black */
+
+    --background: 20 28 36; /* gray-900 */
+    --foreground: 255 255 255; /* white */
+
+    --accent-200: 229 231 235; 
+    --accent-300: 75 85 99; /* gray-600 */
+    --accent-900: 17 24 39; /* gray-900 */
+
+    --blue-base: 37 99 235; /* blue-600 */
+    --blue-light: 29 78 216; /* blue-700 */
+
+    --red-dark: 153 27 27; /* red-800 */
+    --red-base: 254 202 202; /* red-200 */
+    --red-light: 252 165 165; /* red-500 */
+    --red-lighter: 254 202 202; /* red-200 */
+
+    --danger-dark: 153 27 27; /* red-800 */
+    --danger-base: 185 28 28; /* red-700 */
+  }
+}
+
+body {
+  @apply bg-background text-foreground;
+}
