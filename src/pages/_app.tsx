@@ -4,6 +4,13 @@ import { ThemeProvider } from 'next-themes'
 
 import 'styles/index.css'
 
+if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_XSTATE_DEVTOOLS === 'true') {
+  ;(async () => {
+    const inspect = (await import('@xstate/inspect')).inspect
+    inspect({ iframe: false })
+  })()
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>

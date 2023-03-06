@@ -53,33 +53,34 @@ export const defaultContext: GanttMachineContext = {
  * @returns An initialized Gantt chart state machine for use with XState
  */
 export function createGanttMachine(defaultItems: Item[] = [], currentDay?: Date) {
-  const hydratedItems = defaultItems.map(createItemWithActor)
-
-  const items = sortItems(hydratedItems)
-  const rootOffset = getRootOffset(items)
-  const currentDayOffset = calculateOffset(currentDay || defaultContext.currentDay, rootOffset)
-
-  const context = {
-    ...defaultContext,
-    currentDay,
-    currentDayOffset,
-    items,
-    rootOffset,
-  }
-
   return createMachine(
     {
       id: 'ganttChart',
       predictableActionArguments: true,
       preserveActionOrder: true,
-      context,
+      context: defaultContext,
       initial: 'initial',
       states: {
         initial: {
+          entry: assign(() => {
+            const hydratedItems = defaultItems.map(createItemWithActor)
+
+            const items = sortItems(hydratedItems)
+            const rootOffset = getRootOffset(items)
+            const currentDayOffset = calculateOffset(currentDay || defaultContext.currentDay, rootOffset)
+
+            return {
+              ...defaultContext,
+              currentDay,
+              currentDayOffset,
+              items,
+              rootOffset,
+            }
+          }),
           always: [{ target: 'empty', cond: 'isEmpty' }, 'idle'],
         },
         adding: {
-          always: ['idle'],
+          always: 'idle',
         },
         deleting: {
           always: [{ target: 'empty', cond: 'isEmpty' }, 'idle'],

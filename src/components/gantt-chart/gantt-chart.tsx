@@ -18,7 +18,9 @@ const TODAY_PLACEHOLDER = new Date('2022-10-10 00:00:00')
 
 export const GanttChart = ({ items, ...rest }: GanttChartProps) => {
   // Using
-  const [state, send] = useMachine(() => createGanttMachine(items, TODAY_PLACEHOLDER))
+  const [state, send] = useMachine(() => createGanttMachine(items, TODAY_PLACEHOLDER), {
+    devTools: process.env.NEXT_PUBLIC_XSTATE_DEVTOOLS === 'true',
+  })
   const { context } = state
 
   const isEmpty = state.matches('empty')
