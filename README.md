@@ -6,6 +6,7 @@
 
 - `yarn install`
 - `yarn run dev`
+- `NEXT_PUBLIC_XSTATE_DEVTOOLS=true yarn run dev` (with XState DevTools)
 
 ### E2E Tests
 

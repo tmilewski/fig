@@ -1,26 +1,22 @@
-import { createMachine, assign, sendParent, ActorRefFrom } from 'xstate'
+import { createMachine, sendParent, ActorRefFrom } from 'xstate'
 
 export type GanttItemActorRef = ActorRefFrom<ReturnType<typeof createGanttItemMachine>>
 
-export const createGanttItemMachine = (item: ItemExtended) => {
-  return createMachine({
+/**
+ *
+ * Initializes a Gantt chart item state machine with the item's details.
+ *
+ * @returns An initialized Gantt chart item state machine for use with XState.
+ */
+export function createGanttItemMachine(item: ItemExtended) {
+  return createMachine<ItemExtended>({
     id: 'ganttItem',
-    initial: 'default',
     predictableActionArguments: true,
     preserveActionOrder: true,
-    context: {
-      ...item,
-    },
-    schema: {
-      context: {} as ItemExtended,
-    },
+    context: item,
     on: {
-      DELETE: 'deleted',
-    },
-    states: {
-      default: {},
-      deleted: {
-        onEntry: sendParent((ctx) => ({
+      DELETE: {
+        actions: sendParent((ctx) => ({
           type: 'DELETE',
           id: ctx.id,
         })),
